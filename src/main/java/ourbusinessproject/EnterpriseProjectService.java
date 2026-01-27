@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EnterpriseProjectService {
+
     @PersistenceContext
     private final EntityManager entityManager;
 
@@ -27,10 +28,11 @@ public class EnterpriseProjectService {
      * @param aDescription the description of the new project
      * @return the created project
      */
-    public Project newProject(String aTitle, String aDescription) {
+    public Project newProject(String aTitle, String aDescription, Enterprise aEnterprise) {
         Project project = new Project();
         project.setTitle(aTitle);
         project.setDescription(aDescription);
+        project.setEnterprise(aEnterprise);
         this.entityManager.persist(project);
         this.entityManager.flush();
         return project;
