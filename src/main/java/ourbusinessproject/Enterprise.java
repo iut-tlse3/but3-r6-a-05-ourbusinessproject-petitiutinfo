@@ -31,6 +31,14 @@ public class Enterprise {
 
     /**
      *
+     * @return the identifier
+     */
+    public Long getId() {
+        return Id;
+    }
+
+    /**
+     *
      * @return the name
      */
     public String getName() {

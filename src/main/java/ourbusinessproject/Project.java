@@ -20,6 +20,14 @@ public class Project {
 
     /**
      *
+     * @return the identifier
+     */
+    public Long getId() {
+        return Id;
+    }
+
+    /**
+     *
      * @return the description
      */
     public String getDescription() {
