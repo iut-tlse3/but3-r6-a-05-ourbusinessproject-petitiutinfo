@@ -1,9 +1,9 @@
 
 # Our Business Project - A spring boot / JPA project
 
-### NOM : DOE
-### Prénom : John
-### Groupe de TP : 
+### NOM : DEHER
+### Prénom : Enzo
+### Groupe de TP : 1
 - [x] 1
 
 
