@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
+import java.util.Collection;
+import java.util.HashSet;
+
 @Entity
 @Table(name = "Enterprise")
 public class Enterprise {
@@ -15,19 +18,22 @@ public class Enterprise {
 
     @NotBlank
     @Column(name = "Name")
-    private String Name;
+    private String name;
 
     @Size(min = 10)
     @Column(name = "Description")
-    private String Description;
+    private String description;
 
     @NotBlank
     @Column(name = "ContactName")
-    private String ContactName;
+    private String contactName;
 
     @NotBlank @Email
     @Column(name = "ContactEmail")
-    private String ContactEmail;
+    private String contactEmail;
+
+    @OneToMany (mappedBy = "Enterprise")
+    private Collection<Project> projects;
 
     /**
      *
@@ -42,7 +48,7 @@ public class Enterprise {
      * @return the name
      */
     public String getName() {
-        return Name;
+        return name;
     }
 
     /**
@@ -50,7 +56,7 @@ public class Enterprise {
      * @param name the name
      */
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     /**
@@ -58,7 +64,7 @@ public class Enterprise {
      * @return the description
      */
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     /**
@@ -66,7 +72,7 @@ public class Enterprise {
      * @param description the description
      */
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     /**
@@ -74,7 +80,7 @@ public class Enterprise {
      * @return the contactName
      */
     public String getContactName() {
-        return ContactName;
+        return contactName;
     }
 
     /**
@@ -82,7 +88,7 @@ public class Enterprise {
      * @param contactName the contactName
      */
     public void setContactName(String contactName) {
-        ContactName = contactName;
+        this.contactName = contactName;
     }
 
     /**
@@ -90,7 +96,7 @@ public class Enterprise {
      * @return the contactEmail
      */
     public String getContactEmail() {
-        return ContactEmail;
+        return contactEmail;
     }
 
     /**
@@ -98,6 +104,25 @@ public class Enterprise {
      * @param contactEmail the contactEmail
      */
     public void setContactEmail(String contactEmail) {
-        ContactEmail = contactEmail;
+        this.contactEmail = contactEmail;
+    }
+
+    /**
+     *
+     * @return the projects
+     */
+    public Collection<Project> getProjects() {
+        return projects;
+    }
+
+    /**
+     * Add a project to the collection of projects
+     * @param project the project to add
+     */
+    public void addProject(Project project) {
+        if (this.projects == null) {
+            this.projects = new HashSet<>();
+        }
+        this.projects.add(project);
     }
 }
