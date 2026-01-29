@@ -32,7 +32,7 @@ public class Enterprise {
     @Column(name = "ContactEmail")
     private String contactEmail;
 
-    @OneToMany (mappedBy = "Enterprise")
+    @OneToMany (mappedBy = "enterprise")
     private Collection<Project> projects;
 
     /**

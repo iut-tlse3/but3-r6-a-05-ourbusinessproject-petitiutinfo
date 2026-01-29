@@ -14,14 +14,14 @@ public class Project {
 
     @NotBlank
     @Column(name = "Title")
-    private String Title;
+    private String title;
 
     @Column(name = "Description")
-    private String Description;
+    private String description;
 
     @NotNull
     @ManyToOne
-    private Enterprise Enterprise;
+    private Enterprise enterprise;
 
     /**
      *
@@ -36,7 +36,7 @@ public class Project {
      * @return the description
      */
     public String getDescription() {
-        return Description;
+        return description;
     }
 
     /**
@@ -44,7 +44,7 @@ public class Project {
      * @return the title
      */
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     /**
@@ -52,7 +52,7 @@ public class Project {
      * @return the enterprise
      */
     public ourbusinessproject.Enterprise getEnterprise() {
-        return Enterprise;
+        return enterprise;
     }
 
     /**
@@ -60,7 +60,7 @@ public class Project {
      * @param title the title
      */
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     /**
@@ -68,7 +68,7 @@ public class Project {
      * @param description the description
      */
     public void setDescription(String description) {
-        Description = description;
+        this.description = description;
     }
 
     /**
@@ -76,6 +76,6 @@ public class Project {
      * @param enterprise the description
      */
     public void setEnterprise(Enterprise enterprise) {
-        Enterprise = enterprise;
+        this.enterprise = enterprise;
     }
 }

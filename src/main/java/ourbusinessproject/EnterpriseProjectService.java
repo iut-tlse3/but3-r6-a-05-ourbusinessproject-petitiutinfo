@@ -89,7 +89,7 @@ public class EnterpriseProjectService {
      * @return the list of all projects
      */
     public List<Project> findAllProjects() {
-        String query = "SELECT p FROM Project p ORDER BY p.Title";
+        String query = "SELECT p FROM Project p ORDER BY p.title";
         TypedQuery<Project> queryObj = entityManager.createQuery(query,Project.class);
         return queryObj.getResultList();
     }
