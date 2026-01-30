@@ -26,6 +26,11 @@ public class InitializationService {
      */
     @Transactional
     public void initProjects() {
+        /*
+         *  Transactional sert à mettre en place l'atomicité de la méthode.
+         *  Ce qui permet, dans le cas d'une erreur dans l'exécution de la méthode, de réaliser un rollback automatique
+         *  pour revenir à l'état de base et éviter de polluer la base de données avec des données fausse.
+         */
         initEnterprise();
         project1E1 = enterpriseProjectService.newProject("p1E1","P1E1 desc",enterprise1);
         project1E2 = enterpriseProjectService.newProject("p1E2","P1E2 desc",enterprise2);
