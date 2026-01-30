@@ -31,14 +31,14 @@ public class EnterpriseProjectService {
      * @param aDescription the description of the new project
      * @return the created project
      */
-    public Project newProject(String aTitle, String aDescription, Enterprise aEnterprise) {
+    public Project newProject(String aTitle, String aDescription, Enterprise enterprise) {
         Project project = new Project();
         project.setTitle(aTitle);
         project.setDescription(aDescription);
-        project.setEnterprise(aEnterprise);
+        project.setEnterprise(enterprise);
         this.entityManager.persist(project);
         this.entityManager.flush();
-        aEnterprise.addProject(project);
+        enterprise.addProject(project);
         return project;
     }
 
@@ -81,16 +81,19 @@ public class EnterpriseProjectService {
      * @return the enterprise if it exists else null
      */
     public Enterprise findEnterpriseById(Long enterpriseId) {
-        return entityManager.find(Enterprise.class, enterpriseId);
+        return this.entityManager.find(Enterprise.class, enterpriseId);
     }
 
     /**
-     * Find all projects
-     * @return the list of all projects
+     *
+     * @return the list of all projects order by title
      */
     public List<Project> findAllProjects() {
-        String query = "SELECT p FROM Project p ORDER BY p.title";
-        TypedQuery<Project> queryObj = entityManager.createQuery(query,Project.class);
-        return queryObj.getResultList();
+        String queryAsJpql = "select p from Project p join fetch p.enterprise order by p.title";
+        TypedQuery<Project> query = this.entityManager.createQuery(
+                queryAsJpql,
+                Project.class
+        );
+        return query.getResultList();
     }
 }
